@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="index.css">
+
+</head>
+
+<body>
+
+    <header>
+        <div class="header-inner">
+            <div class="header-left">
+                <div class="logo-box">
+                    <img src="logo.PNG" class="img-logo">
+                </div>
+                <div>
+                    <div class="header-uni">UGANDA INSTITUTE OF INFORMATION AND COMMUNICATIONS TECHNOLOGY</div>
+                    <div class="header-title">Attendance Register</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <span>Academic Year 2025/26</span>
+                <span>Semester II</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Session Details -->
+        <div class="card">
+            <div class="card-title">Session Details</div>
+            <div class="session-grid">
+                <div>
+                    <label class="label" for="date">Date</label>
+                    <input type="date" id="date" />
+                </div>
+                <div>
+                    <label class="label" for="time">Time</label>
+                    <input type="time" id="time" value="09:00" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Auth -->
+        <div class="card" id="auth-card">
+            <div class="card-title" id="auth-title">Sign In</div>
+
+            <div id="auth-form">
+                <div class="session-grid" style="grid-template-columns:1fr 1fr;">
+                    <div>
+                        <label class="label" for="auth-email">Email</label>
+                        <input type="text" id="auth-email" placeholder="you@student.ashford.edu" autocomplete="email" />
+                    </div>
+                    <div>
+                        <label class="label" for="auth-password">Password</label>
+                        <input type="password" id="auth-password" placeholder="At least 6 characters"
+                            autocomplete="current-password" />
+                    </div>
+                </div>
+                <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
+                    <button id="signin-btn" onclick="handleSignIn()"
+                        style="padding:9px 20px; border-radius:3px; background:var(--primary); color:var(--primary-fg); border:none; font-family:var(--sans); font-size:0.85rem; font-weight:600; cursor:pointer;">
+                        Sign In
+                    </button>
+                    <button id="signup-btn" onclick="handleSignUp()"
+                        style="padding:9px 20px; border-radius:3px; background:var(--secondary); color:var(--fg); border:1px solid var(--border); font-family:var(--sans); font-size:0.85rem; font-weight:600; cursor:pointer;">
+                        Create Account
+                    </button>
+                </div>
+                <div class="entry-status" id="auth-status"></div>
+            </div>
+
+            <div id="auth-signed-in"
+                style="display:none; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+                <span class="mono" style="font-size:0.8rem; color:var(--muted-fg);">Signed in as <span
+                        id="auth-email-display" style="color:var(--fg);"></span></span>
+                <button onclick="handleSignOut()"
+                    style="padding:8px 16px; border-radius:3px; background:var(--secondary); color:var(--fg); border:1px solid var(--border); font-family:var(--sans); font-size:0.8rem; cursor:pointer;">
+                    Sign Out
+                </button>
+            </div>
+        </div>
+
+        <!-- Student Register -->
+        <div class="register-section">
+            <div class="register-header">
+                <div>
+                    <span class="serif" style="font-size:1.2rem; color:black">Student Register</span>
+                    <span class="register-count mono" id="enrolled-count"></span>
+                </div>
+            </div>
+
+            <div class="entry-form">
+                <div class="entry-grid">
+                    <div>
+                        <label class="label" for="entry-name">Full Name</label>
+                        <input type="text" id="entry-name" placeholder="E.g. Birungi Samuel" />
+                    </div>
+                    <div>
+                        <label class="label" for="entry-id">Student ID</label>
+                        <input type="text" id="entry-id" class="mono-input" placeholder="E.g 2025/DSWE/2000/DAY" />
+                    </div>
+                    <div>
+                        <label class="label" for="entry-programme">Programme</label>
+                        <input type="text" id="entry-programme" placeholder="E.g. SWE2103 ICT Project" />
+                    </div>
+                    <button id="save-btn" onclick="handleSave()">Save my details</button>
+                </div>
+                <div class="entry-status" id="entry-status"></div>
+            </div>
+
+            <div class="col-headers">
+                <span>#</span>
+                <span>Full Name</span>
+                <span>Student ID</span>
+                <span>Programme</span>
+                <span>Saved</span>
+            </div>
+
+            <div id="student-list"></div>
+        </div>
+
+        <footer>
+            <span class="mono">UICT E-Register. Registry of Student Records.</span>
+            <span>All entries are reserved as a property of UICT.</span>
+        </footer>
+    </main>
+
+    <script type="module" src="index.js"></script>
+</body>
+
+</html>
